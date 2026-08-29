@@ -1,57 +1,73 @@
-# Sample Hardhat 3 Project (`mocha` and `ethers`)
+# RentChain
 
-This project showcases a Hardhat 3 project using `mocha` for tests and the `ethers` library for Ethereum interactions.
+Blockchain-based rental and deposit management system.
 
-To learn more about Hardhat 3, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3](https://hardhat.org/hardhat3-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+## Features
 
-## Project Overview
+* Smart contract-based rental agreements
+* Secure deposit escrow
+* Monthly rent payments
+* Dispute system with arbitrator
+* Real-time contract state
 
-This example project includes:
+## Tech Stack
 
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using `mocha` and ethers.js
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
+* Solidity
+* Hardhat 3
+* Ethers.js
+* React
+* JavaScript
+* Mocha
 
-## Usage
+## Setup
 
-### Running Tests
+Install dependencies:
 
-To run all the tests in the project, execute the following command:
+```bash
+npm install
+```
 
-```shell
+Run tests:
+
+```bash
 npx hardhat test
 ```
 
-You can also selectively run the Solidity or `mocha` tests:
+Start local blockchain:
 
-```shell
-npx hardhat test solidity
-npx hardhat test mocha
+```bash
+npx hardhat node
 ```
 
-### Make a deployment to Sepolia
+Deploy locally:
 
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
-
-To run the deployment to a local chain:
-
-```shell
-npx hardhat ignition deploy ignition/modules/Counter.ts
+```bash
+npx hardhat run scripts/deploy.js --network localhost
 ```
 
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
+Start frontend:
 
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
+```bash
+cd frontend
+npm install
+npm start
+```
 
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
+Frontend runs at `http://localhost:3000`.
 
-```shell
+## Configuration
+
+Set the contract address and wallet keys in `frontend/src/App.js`:
+
+```javascript
+const CONTRACT_ADDRESS = "YOUR_CONTRACT_ADDRESS";
+const TENANT_PRIVATE_KEY = "YOUR_TENANT_PRIVATE_KEY";
+const ARBITRATOR_PRIVATE_KEY = "YOUR_ARBITRATOR_PRIVATE_KEY";
+```
+
+For Sepolia deployment, use a `SEPOLIA_PRIVATE_KEY` environment variable or Hardhat keystore.
+
+```bash
 npx hardhat keystore set SEPOLIA_PRIVATE_KEY
 ```
 
-After setting the variable, you can run the deployment with the Sepolia network:
-
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
-```
