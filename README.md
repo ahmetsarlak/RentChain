@@ -2,6 +2,8 @@
 
 Blockchain-based rental and deposit management system.
 
+![RentChain Screenshot](rentchainmenu.png)
+
 ## Features
 
 * Smart contract-based rental agreements
